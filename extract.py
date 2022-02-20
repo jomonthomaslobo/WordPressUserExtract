@@ -8,10 +8,12 @@ print("WordPress User Extractor")
 print("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀")
 print("Author: @jomonthomaslobo")
 print("------------------------------------------------------------------------------------------------")
-print("This application is for eductional purposes only.This Application is not responsible for any ");print("misuse.")
+print("This application is for eductional purposes only.This Application developer is not responsible ")
+print("for any misuse.")
 print("------------------------------------------------------------------------------------------------")
 n = len(sys.argv)
 #print(sys.argv[2])
+
 if (n == 1):
     print("Arguments are missing Usage: python3 extract.py --url <url>")
     sys.exit(1) 
@@ -33,7 +35,11 @@ if(sys.argv[1] == "--url"):
             
             r = requests.get(url)
             if(r.status_code == 200):
-                print("Found User: " + str(i)+" : Username :"+r.url.split("/")[-2])
+               if(r.url.split("/")[-2] != "author"):  
+                 print("Found User: " + str(i)+" : Username :"+r.url.split("/")[-2])
+               else :
+                    print("User extraction not available in this site")
+                    sys.exit(1)
             else:
                 print("User " + str(i) + " does not exist")
         print("------------------------------------------------------------------------------------------------")
@@ -48,7 +54,11 @@ if(sys.argv[1] == "--url"):
             #print(url)
             r = requests.get(url)
             if(r.status_code == 200):
+               if(r.url.split("/")[-2] != "author"):  
                  print("Found User: " + str(i)+" : Username :"+r.url.split("/")[-2])
+               else :
+                    print("User extraction not available in this site")
+                    sys.exit(1)
             else:
                 print("User " + str(j) + " does not exist")
                 errorCount+=1
