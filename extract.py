@@ -38,7 +38,7 @@ def extract_users(base_url):
             for user in users:
                 user_table.append([user['id'], user['name'], user['link'],])
             
-            print(tabulate(user_table, headers=["User ID", "Username", "Email"], tablefmt="grid"))
+            print(tabulate(user_table, headers=["User ID", "Username", "Link"], tablefmt="grid"))
         else:
             print("No users found.")
 
