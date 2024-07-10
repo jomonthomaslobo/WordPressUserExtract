@@ -3,6 +3,7 @@
 
 import sys
 import requests
+from tabulate import tabulate
 
 def print_banner():
     print("WordPress User Extractor")
@@ -33,8 +34,11 @@ def extract_users(base_url):
 
         users = response.json()
         if users:
+            user_table = []
             for user in users:
-                print(f"Found User ID: {user['id']} : Username: {user['name']}")
+                user_table.append([user['id'], user['name'], user['link'],])
+            
+            print(tabulate(user_table, headers=["User ID", "Username", "Email"], tablefmt="grid"))
         else:
             print("No users found.")
 
