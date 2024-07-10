@@ -36,9 +36,9 @@ def extract_users(base_url):
         if users:
             user_table = []
             for user in users:
-                user_table.append([user['id'], user['name'], user['link'],])
+                user_table.append([user['id'], user['name'], user['link'],user['slug']])
             
-            print(tabulate(user_table, headers=["User ID", "Username", "Link"], tablefmt="grid"))
+            print(tabulate(user_table, headers=["User ID", "Name", "Link","Slug"], tablefmt="grid"))
         else:
             print("No users found.")
 
